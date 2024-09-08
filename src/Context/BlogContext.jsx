@@ -1,8 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 // loader
-import { DotLoader } from "react-spinners";
-import toast from "react-hot-toast";
 export const BlogContext = createContext();
 
 export const BlogContextProvider = ({ children }) => {
@@ -10,28 +8,40 @@ export const BlogContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [posts, setPost] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(null);
-
+  const [totalPages, setTotalPages] = useState(null);
   //Axios url apply there so we get
   const API_URL = import.meta.env.VITE_BLOG_URL;
   //start filling data
-  const BlogPostData = async () => {
-    let toastId = toast.loading("loading.......");
+  const BlogPostData = async (page = 1, limit = 1) => {
+    //Called the blocks here so we get
     try {
-      const Data = axios.get(API_URL);
-      console.log(Data);
+      setLoading(true);
+      const response = await axios.get(`${API_URL}?page=${page}`);
+      const data = response.data;
+      setPost(data.posts);
+      setTotalPages(data.totalPages);
       //modeified it
     } catch (er) {
+      console.log(er);
       console.log("error whle fetching the blog data", er);
+      setPost([]);
+      // setPage(0);
+      setTotalPages(null);
+    } finally {
+      // loading false after executed
+      setLoading(false);
     }
-    toast.dismiss(toastId);
-    // setLoading(false)
   };
 
-  //api fetched
+  //Buttone movement apply there
+  const BtnNextHandler = (page) => {
+    setPage(page);
+    BlogPostData(page )
+  };
+
   useEffect(() => {
-    BlogPostData();
-  }, []);
+    BlogPostData(page);
+  }, [page]);
 
   //now stored it into one function so we get
   const StateValuesStoredAtOneObject = {
@@ -41,8 +51,10 @@ export const BlogContextProvider = ({ children }) => {
     setPost,
     page,
     setPage,
-    totalPage,
-    setTotalPage,
+    totalPages,
+    BtnNextHandler,
+    BlogPostData,
+    setTotalPages,
   };
 
   //exectuted the states
