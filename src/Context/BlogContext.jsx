@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import toast from 'react-hot-toast'
 
 export const BlogContext = createContext();
 
@@ -12,12 +11,21 @@ export const BlogContextProvider = ({ children }) => {
   const [totalPages, setTotalPages] = useState(null);
   //Axios url apply there so we get
   const API_URL = import.meta.env.VITE_BLOG_URL;
+
   //start filling data
-  const BlogPostData = async (page = 1) => {
+  const BlogPostData = async (page = 1, tag = null, category) => {
     //Called the blocks here so we get
+    const API_URLS = `${API_URL}?page=${page}`;
+    if (tag) {
+      API_URLS += `&tags=${tag}`;
+    }
+    if (category) {
+      API_URLS += `&category=${category}`;
+    }
+
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}?page=${page}`);
+      const response = await axios.get(`${API_URLS}`);
       const data = response.data;
       setPost(data.posts);
       setTotalPages(data.totalPages);
@@ -37,12 +45,8 @@ export const BlogContextProvider = ({ children }) => {
   //Buttone movement apply there
   const BtnNextHandler = (page) => {
     setPage(page);
-    BlogPostData(page)
-  };
-
-  useEffect(() => {
     BlogPostData(page);
-  }, [page]);
+  };
 
   //now stored it into one function so we get
   const StateValuesStoredAtOneObject = {
