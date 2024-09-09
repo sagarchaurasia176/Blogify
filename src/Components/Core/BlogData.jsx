@@ -41,7 +41,7 @@ const BlogData = () => {
                     <div className=" flex   justify-around ">
                       {details.tags.map((tag) => {
                         return (
-                          <span className=" text-blue-900 font-bold cursor-pointer">{`#${tag}`}</span>
+                          <span className="   border-b border-b-blue-700 text-blue-900 font-bold cursor-pointer">{`#${tag}`}</span>
                         );
                       })}
                     </div>
