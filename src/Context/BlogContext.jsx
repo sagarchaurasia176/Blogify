@@ -37,8 +37,7 @@ export const BlogContextProvider = ({ children }) => {
   //Buttone movement apply there
   const BtnNextHandler = (page) => {
     setPage(page);
-    toast.success("move to next page")
-    BlogPostData(page )
+    BlogPostData(page)
   };
 
   useEffect(() => {
