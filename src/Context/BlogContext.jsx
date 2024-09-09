@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-// loader
+import toast from 'react-hot-toast'
+
 export const BlogContext = createContext();
 
 export const BlogContextProvider = ({ children }) => {
@@ -12,7 +13,7 @@ export const BlogContextProvider = ({ children }) => {
   //Axios url apply there so we get
   const API_URL = import.meta.env.VITE_BLOG_URL;
   //start filling data
-  const BlogPostData = async (page = 1, limit = 1) => {
+  const BlogPostData = async (page = 1) => {
     //Called the blocks here so we get
     try {
       setLoading(true);
@@ -36,7 +37,7 @@ export const BlogContextProvider = ({ children }) => {
   //Buttone movement apply there
   const BtnNextHandler = (page) => {
     setPage(page);
-    BlogPostData(page )
+    BlogPostData(page)
   };
 
   useEffect(() => {

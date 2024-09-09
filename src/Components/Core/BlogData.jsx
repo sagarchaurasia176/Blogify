@@ -4,14 +4,13 @@ import { SyncLoader } from "react-spinners";
 
 const BlogData = () => {
   //called the usContext
-  const { loading, posts } =
-    useContext(BlogContext);
+  const { loading, posts } = useContext(BlogContext);
   console.log("post from the blog data", posts);
 
   return (
-    <div className=" flex  container  bg-white  justify-center p-1 ">
+    <div className="  bg-white  mt-[39px]   p-10 ">
       {/* Apply the map () here so we get */}
-      <div className="  w-[1200px]">
+      <div className=" container flex justify-center p-4 items-center">
         {loading ? (
           <div className="  flex items-center justify-center">
             <SyncLoader />
@@ -53,9 +52,7 @@ const BlogData = () => {
           </div>
         )}
       </div>
-
-     
-        </div>
+    </div>
   );
 };
 

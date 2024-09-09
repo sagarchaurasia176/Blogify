@@ -2,8 +2,8 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div>
-        <div className='  bg-white p-1 text-center font-semibold  '>
+    <div className=' fixed top-0 w-full bg-white p-3 shadow-md'>
+        <div className='  p-1 text-center text-black font-semibold  '>
             <h1>Blogify</h1>
         </div>
     </div>
