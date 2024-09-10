@@ -15,7 +15,7 @@ export const BlogContextProvider = ({ children }) => {
   //start filling data
   const BlogPostData = async (page = 1, tag = null, category) => {
     //Called the blocks here so we get
-    const API_URLS = `${API_URL}?page=${page}`;
+    let API_URLS = `${API_URL}?page=${page}`;
     if (tag) {
       API_URLS += `&tags=${tag}`;
     }

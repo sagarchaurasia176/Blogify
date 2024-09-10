@@ -25,10 +25,10 @@ const BlogData = () => {
           // Post page update here so we get !
           <div className="   text-black p-3">
             {Array.isArray(posts) &&
-              posts.map((details) => (
-                <div key={details.id}>
+              posts.map((details , index) => (
+                <div>
                   <div className="  text-orange-400  font-thin ">
-                    <div className=" text-black font-semibold">
+                    <div key={index} className=" text-black font-semibold">
                       {details.title}
                     </div>
                     <div className=" text-green-900">{details.author}</div>
