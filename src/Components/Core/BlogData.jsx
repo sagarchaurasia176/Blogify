@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { BlogContext } from "../../Context/BlogContext";
 import { SyncLoader } from "react-spinners";
+import FitlerCardPage from "../../pages/FitlerCardPage";
 
 const BlogData = () => {
   //called the usContext
@@ -23,32 +24,10 @@ const BlogData = () => {
           </div>
         ) : (
           // Post page update here so we get !
-          <div className="   text-black p-3">
-            {Array.isArray(posts) &&
-              posts.map((details , index) => (
-                <div>
-                  <div className="  text-orange-400  font-thin ">
-                    <div key={index} className=" text-black font-semibold">
-                      {details.title}
-                    </div>
-                    <div className=" text-green-900">{details.author}</div>
-                    <div className=" text-blue-100 font-semibold">
-                      {" "}
-                      {details.category}
-                    </div>
-                    <div>{details.content}</div>
-                    {/* tages apply */}
-                    <div className=" flex   justify-around ">
-                      {details.tags.map((tag) => {
-                        return (
-                          <span className="   border-b border-b-blue-700 text-blue-900 font-bold cursor-pointer">{`#${tag}`}</span>
-                        );
-                      })}
-                    </div>
-                    {/* <div>{datas.tags}</div> */}
-                  </div>
-                </div>
-              ))}
+          <div>
+            {posts.map((val) => (
+              <FitlerCardPage key={val.id} val={val} />
+            ))}
           </div>
         )}
       </div>
@@ -57,3 +36,5 @@ const BlogData = () => {
 };
 
 export default BlogData;
+
+
