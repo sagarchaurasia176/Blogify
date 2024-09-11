@@ -9,7 +9,7 @@ const BlogData = () => {
   console.log("post from the blog data", posts);
 
   return (
-    <div className="  bg-white  mt-[39px]   p-10 ">
+    <div className="  bg-white ">
       {/* Apply the map () here so we get */}
       <div className=" container flex justify-center p-4 items-center">
         {loading ? (
@@ -26,6 +26,8 @@ const BlogData = () => {
           // Post page update here so we get !
           <div>
             {posts.map((val) => (
+
+              // main card page ---
               <FitlerCardPage key={val.id} val={val} />
             ))}
           </div>
