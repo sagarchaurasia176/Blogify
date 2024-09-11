@@ -20,12 +20,12 @@ const App = () => {
     const page = searchParams.get("page") ?? 1;
     // applied for the tag so we get
     if (location.pathname.includes("tags")) {
-      const tag = location.pathname.split("/").at(-1).replacAll("-", " ");
+      const tag = location.pathname.split("/").at(-1).replaceAll("", "");
       BlogPostData(Number(page), tag);
 
       // Category conditions
     } else if (location.pathname.includes("category")) {
-      const category = location.pathname.split("/").at(-1).replacAll("");
+      const category = location.pathname.split("/").at(-1).replaceAll("");
       BlogPostData(Number(page), category);
     } else {
       BlogPostData(Number(page));
