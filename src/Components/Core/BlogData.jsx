@@ -11,13 +11,13 @@ const BlogData = () => {
   return (
     <div className="  bg-white ">
       {/* Apply the map () here so we get */}
-      <div className=" container flex justify-center p-4 items-center">
+      <div className="">
         {loading ? (
-          <div className="  flex items-center justify-center">
+          <div className=" flex justify-center items-center  h-screen mt-[15rem]">
             <SyncLoader />
           </div>
         ) : Array.isArray(posts) && posts.length === 0 ? (
-          <div className=" text-black">
+          <div className=" text-black h-screen w-full">
             <h2 className=" text-center  text-4xl font-bold ">
               404 Page not found !{" "}
             </h2>
@@ -26,7 +26,6 @@ const BlogData = () => {
           // Post page update here so we get !
           <div>
             {posts.map((val) => (
-
               // main card page ---
               <FitlerCardPage key={val.id} val={val} />
             ))}
@@ -38,5 +37,3 @@ const BlogData = () => {
 };
 
 export default BlogData;
-
-
