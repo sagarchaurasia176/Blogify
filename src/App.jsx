@@ -8,6 +8,7 @@ import CategoryPage from "./pages/CategoryPage";
 import { useContext, useEffect } from "react";
 import { BlogContext } from "./Context/BlogContext";
 
+// APP function () so we get ,
 const App = () => {
   const { page, BlogPostData } = useContext(BlogContext);
   //create the useSearch Params hooks
@@ -20,12 +21,12 @@ const App = () => {
     const page = searchParams.get("page") ?? 1;
     // applied for the tag so we get
     if (location.pathname.includes("tags")) {
-      const tag = location.pathname.split("/").at(-1).replaceAll("", "");
+      const tag = location.pathname.split("/").at(-1).replaceAll("-", " ");
       BlogPostData(Number(page), tag);
 
       // Category conditions
     } else if (location.pathname.includes("category")) {
-      const category = location.pathname.split("/").at(-1).replaceAll("");
+      const category = location.pathname.split("/").at(-1).replaceAll("-", "");
       BlogPostData(Number(page), category);
     } else {
       BlogPostData(Number(page));
@@ -50,6 +51,5 @@ const App = () => {
 };
 
 export default App;
-
 
 // Pending id iterations

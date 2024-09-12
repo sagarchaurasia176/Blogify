@@ -5,10 +5,10 @@ import MoverHandler from "./Core/MoverHandler";
 const Home = () => {
   return (
     <div className=" bg-slate-600">
-      <div className=" border  mt-1">
+      <div className=" ">
         <BlogData />
-        <MoverHandler />
       </div>
+      <MoverHandler />
     </div>
   );
 };
