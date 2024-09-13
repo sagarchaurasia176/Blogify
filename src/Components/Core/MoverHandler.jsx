@@ -15,7 +15,7 @@ const MoverHandler = () => {
               Previous
             </button>
           )}
-          {page > 0 && (
+          {page < totalPages && (
             <button
               onClick={() => BtnNextHandler(page + 1)}
               className=" rounded-md bg-slate-400 p-2"
