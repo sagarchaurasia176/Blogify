@@ -29,6 +29,8 @@ export const BlogContextProvider = ({ children }) => {
       const data = response.data;
       setPost(data.posts);
       setTotalPages(data.totalPages);
+
+      
       //modeified it
     } catch (er) {
       console.log(er);
