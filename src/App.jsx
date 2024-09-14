@@ -21,12 +21,12 @@ const App = () => {
     const page = searchParams.get("page") ?? 1;
     // applied for the tag so we get
     if (location.pathname.includes("tags")) {
-      const tag = location.pathname.split("/").at(-1).replaceAll("-", " ");
+      const tag = location.pathname.split("/").at(-1).replace("-", " ");
       BlogPostData(Number(page), tag);
 
       // Category conditions
     } else if (location.pathname.includes("category")) {
-      const category = location.pathname.split("/").at(-1).replaceAll("-", " ");
+      const category = location.pathname.split("/").at(-1).replace("-", " ");
       BlogPostData(Number(page), category);
     } else {
       BlogPostData(Number(page));
@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/blogpage/:blogId" element={<BlogPage />}></Route>
         <Route path="/tag/:tagId" element={<TagPage />}></Route>
-        <Route path="/category/:categoryId" element={<CategoryPage />}></Route>
+        <Route path="/category/:category" element={<CategoryPage />}></Route>
       </Routes>
     </>
   );
