@@ -4,7 +4,7 @@ import axios from "axios";
 export const BlogContext = createContext();
 
 export const BlogContextProvider = ({ children }) => {
-  // Create all the states here
+  // Create all the states here so we get !
   const [loading, setLoading] = useState(false);
   const [posts, setPost] = useState([]);
   const [page, setPage] = useState(1);
@@ -30,7 +30,6 @@ export const BlogContextProvider = ({ children }) => {
       setPost(data.posts);
       setTotalPages(data.totalPages);
 
-      
       //modeified it
     } catch (er) {
       console.log(er);
