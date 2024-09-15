@@ -10,7 +10,7 @@ import { BlogContext } from "./Context/BlogContext";
 
 // APP function () so we get ,
 const App = () => {
-  const { page, BlogPostData } = useContext(BlogContext);
+  const { BlogPostData } = useContext(BlogContext);
   //create the useSearch Params hooks
   const [searchParams, setSearchParams] = useSearchParams();
   //too identify the current location we used the location params
@@ -26,14 +26,14 @@ const App = () => {
 
       // Category conditions
     } else if (location.pathname.includes("category")) {
-      const category = location.pathname.split("/").at(-1).replace("-", " ");
+      const category = location.pathname.split("/").at(-1).replaceAll("-", " ");
       BlogPostData(Number(page), category);
     } else {
       BlogPostData(Number(page));
     }
 
     // change whenever it calls
-  }, [location.pathname, location.searchParams]);
+  }, [location.pathname, location.search]);
 
   return (
     <>
@@ -43,7 +43,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/blogpage/:blogId" element={<BlogPage />}></Route>
-        <Route path="/tag/:tagId" element={<TagPage />}></Route>
+        <Route path="/tag/:tag" element={<TagPage />}></Route>
         <Route path="/category/:category" element={<CategoryPage />}></Route>
       </Routes>
     </>
