@@ -6,8 +6,7 @@ import FitlerCardPage from "../../pages/FitlerCardPage";
 const BlogData = () => {
   //called the usContext
   const { loading, posts } = useContext(BlogContext);
-  console.log("post from the blog data", posts);
-
+    console.log(posts)
   return (
     <div className="  bg-white ">
       {/* Apply the map () here so we get */}
@@ -32,6 +31,8 @@ const BlogData = () => {
           </div>
         )}
       </div>
+      {/* footer*/}
+      
     </div>
   );
 };
