@@ -26,6 +26,7 @@ export const BlogContextProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await axios.get(`${API_URLS}`);
+      console.log(response, "api context");
       const data = response.data;
       setPost(data.posts);
       setTotalPages(data.totalPages);

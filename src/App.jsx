@@ -27,7 +27,7 @@ const App = () => {
       // Category conditions
     } else if (location.pathname.includes("category")) {
       const category = location.pathname.split("/").at(-1).replaceAll("-", " ");
-      BlogPostData(Number(page), category);
+      BlogPostData(Number(page), null,category);
     } else {
       BlogPostData(Number(page));
     }
@@ -43,7 +43,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/blogpage/:blogId" element={<BlogPage />}></Route>
-        <Route path="/tag/:tag" element={<TagPage />}></Route>
+        <Route path="/tags/:tag" element={<TagPage />}></Route>
         <Route path="/category/:category" element={<CategoryPage />}></Route>
       </Routes>
     </>
