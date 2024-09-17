@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const BlogContext = createContext();
 
@@ -11,13 +12,13 @@ export const BlogContextProvider = ({ children }) => {
   const [totalPages, setTotalPages] = useState(null);
   //Axios url apply there so we get
   const API_URL = import.meta.env.VITE_BLOG_URL;
-
+  const navigate = useNavigate();
   //start filling data
-  const BlogPostData = async (page = 1, tag = null, category) => {
+  const BlogPostData = async (page = 1, tags = null, category) => {
     //Called the blocks here so we get
     let API_URLS = `${API_URL}?page=${page}`;
-    if (tag) {
-      API_URLS += `&tags=${tag}`;
+    if (tags) {
+      API_URLS += `&tags=${tags}`;
     }
     if (category) {
       API_URLS += `&category=${category}`;
@@ -26,7 +27,6 @@ export const BlogContextProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await axios.get(`${API_URLS}`);
-      console.log(response, "api context");
       const data = response.data;
       setPost(data.posts);
       setTotalPages(data.totalPages);
@@ -43,11 +43,10 @@ export const BlogContextProvider = ({ children }) => {
       setLoading(false);
     }
   };
-
   //Buttone movement apply there
   const BtnNextHandler = (page) => {
+    navigate({ search: `?page=${page}` });
     setPage(page);
-    BlogPostData(page);
   };
 
   //now stored it into one function so we get
