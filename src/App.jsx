@@ -3,10 +3,10 @@ import Navbar from "./Components/Core/Navbar";
 import Home from "./Components/Home";
 import "./App.css";
 import BlogPage from "./pages/BlogPage";
-import TagPage from "./pages/TagPage";
 import CategoryPage from "./pages/CategoryPage";
 import { useContext, useEffect } from "react";
 import { BlogContext } from "./Context/BlogContext";
+import TagPage from "./pages/TagPage";
 
 // APP function () so we get ,
 const App = () => {
@@ -22,6 +22,7 @@ const App = () => {
     // applied for the tag so we get
     if (location.pathname.includes("tags")) {
       const tag = location.pathname.split("/").at(-1).replace("-", " ");
+      console.log(tag, "tag at app.jsx page");
       BlogPostData(Number(page), tag);
 
       // Category conditions

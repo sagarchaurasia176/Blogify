@@ -14,11 +14,11 @@ export const BlogContextProvider = ({ children }) => {
   const API_URL = import.meta.env.VITE_BLOG_URL;
   const navigate = useNavigate();
   //start filling data
-  const BlogPostData = async (page = 1, tag = null, category) => {
+  const BlogPostData = async (page = 1, tags = null, category) => {
     //Called the blocks here so we get
     let API_URLS = `${API_URL}?page=${page}`;
-    if (tag) {
-      API_URLS += `&tags=${tag}`;
+    if (tags) {
+      API_URLS += `&tags=${tags}`;
     }
     if (category) {
       API_URLS += `&category=${category}`;
