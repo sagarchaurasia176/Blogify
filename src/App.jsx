@@ -27,7 +27,7 @@ const App = () => {
       // Category conditions
     } else if (location.pathname.includes("category")) {
       const category = location.pathname.split("/").at(-1).replaceAll("-", " ");
-      BlogPostData(Number(page), null,category);
+      BlogPostData(Number(page), null, category);
     } else {
       BlogPostData(Number(page));
     }
