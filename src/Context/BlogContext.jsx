@@ -13,6 +13,8 @@ export const BlogContextProvider = ({ children }) => {
   //Axios url apply there so we get
   const API_URL = import.meta.env.VITE_BLOG_URL;
   const navigate = useNavigate();
+
+  
   //start filling data
   const BlogPostData = async (page = 1, tags = null, category) => {
     //Called the blocks here so we get
@@ -20,6 +22,7 @@ export const BlogContextProvider = ({ children }) => {
     if (tags) {
       API_URLS += `&tags=${tags}`;
     }
+
     if (category) {
       API_URLS += `&category=${category}`;
     }
